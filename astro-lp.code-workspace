@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": "src"
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "astro-ls.astro-ls",
+      "eslint.vscode-eslint",
+      "tailwindcss.tailwind-vscode"
+    ]
+  },
+  "settings": {
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "astro", // Enable .astro
+      "typescript", // Enable .ts
+      "typescriptreact" // Enable .tsx
+    ]
+  }
+}
