@@ -1,69 +1,79 @@
-html {
-	font-size: 62.5%;
-}
 body {
 	background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
 .hero {
-	max-width: 120rem;
+	max-width: 75rem;
 	height: 100vh;
 	position: relative;
+}
 
-	&__content {
-		position: absolute;
-		top: 50%;
-		left: 20%;
-		transform: translateY(-50%);
-		max-width: 30%;
-	}
+.hero__content {
+	position: absolute;
+	top: 50%;
+	left: 20%;
+	transform: translateY(-50%);
+	max-width: 30%;
+}
 
-	&--title {
-		font-size: 4.8rem;
-		font-weight: bold;
-		line-height: 1.05;
-	}
+.hero--title {
+	font-size: 3rem;
+	font-weight: bold;
+	line-height: 1.05;
+}
 
-	&--description {
-		margin-top: 2.8rem;
-		font-size: 2.4rem;
-		line-height: 1.4;
-		color: #333;
-	}
+.hero--description {
+	margin-top: 1.8rem;
+	font-size: 1.5rem;
+	line-height: 1.4;
+	color: #333;
+}
 
-	&--cta {
-		margin-top: 4.8rem;
-		padding: 1.2rem 2.4rem;
-		font-size: 2.8rem;
-		border: 1px solid #819dca;
-		background-color: #819dca;
-		transition: background-color 0.2s;
-	}
+.hero--cta {
+	margin-top: 3rem;
+	padding: 0.8rem 1.6rem;
+	font-size: 1.5rem;
+	border: 1px solid #819dca;
+	background-color: #819dca;
+	transition: background-color 0.2s;
+}
 
-	&--cta:hover {
-		background-color: #7189b1;
-	}
+.hero--cta:hover {
+	background-color: #7189b1;
 }
 
 @media (max-width: 768px) {
-	html {
-		font-size: 56.25%;
+	.hero__content {
+		max-width: 40%;
 	}
-	.hero {
-		&__content {
-			max-width: 40%;
-		}
+
+	.hero--title {
+		font-size: 2.8rem;
+	}
+
+	.hero--description {
+		font-size: 1.3rem;
+	}
+
+	.hero--cta {
+		font-size: 1.3rem;
 	}
 }
 
 @media (max-width: 425px) {
-	html {
-		font-size: 50%;
+	.hero__content {
+		max-width: 50%;
 	}
 
-	.hero {
-		&__content {
-			max-width: 50%;
-		}
+	.hero--title {
+		font-size: 2.6rem;
+	}
+
+	.hero--description {
+		font-size: 1.2rem;
+	}
+
+	.hero--cta {
+		font-size: 1.2rem;
 	}
 }
