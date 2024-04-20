@@ -4,42 +4,40 @@ import "../index.scss";
 ---
 
 <Layout title="Welcome to Astro.">
-  <body>
-    <main>
-      <section class="hero container">
-        <div class="hero__content">
-          <h1 class="hero--title">Travel without limits!</h1>
-          <p class="hero--description">
-            Lorem, ipsum dolor sit amet consecte tur adipisicing elit. Soluta ut
-            facere aliquam impedit ullam minusreprehenderit quia in laudantium
-            sint.
+  <main>
+    <section class="hero container">
+      <div class="hero__content">
+        <h1 class="hero--title">Travel without limits!</h1>
+        <p class="hero--description">
+          Lorem, ipsum dolor sit amet consecte tur adipisicing elit. Soluta ut
+          facere aliquam impedit ullam minusreprehenderit quia in laudantium
+          sint.
+        </p>
+        <button class="hero--cta">Check offer</button>
+      </div>
+      <div id="modal" class="modal-wrapper">
+        <div class="modal-header">
+          <button class="modal-icon--close">
+            <img src="../cross.svg" alt="cross icon" />
+          </button>
+          <h2 class="modal--title">Modal title</h2>
+        </div>
+        <div class="modal-content">
+          <p class="modal--description">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ea
+            consequuntur cupiditate sequi. Ipsa iste dignissimos, odit natus
+            nisi quod ipsam dolorum quae temporibus similique expedita error ad
+            quo corporis ipsum ea cumque provident, accusantium quia
+            perspiciatis? Id pariatur eligendi ex nisi quos magnam non ipsum
+            odit beatae! Sint, voluptatum?
           </p>
-          <button class="hero--cta">Check offer</button>
         </div>
-        <div id="modal" class="modal-wrapper">
-          <div class="modal-header">
-            <button class="modal-icon--close">
-              <img src="../cross.svg" alt="cross icon" />
-            </button>
-            <h2 class="modal--title">Modal title</h2>
-          </div>
-          <div class="modal-content">
-            <p class="modal--description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore
-              ea consequuntur cupiditate sequi. Ipsa iste dignissimos, odit
-              natus nisi quod ipsam dolorum quae temporibus similique expedita
-              error ad quo corporis ipsum ea cumque provident, accusantium quia
-              perspiciatis? Id pariatur eligendi ex nisi quos magnam non ipsum
-              odit beatae! Sint, voluptatum?
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button class="modal-btn modal-btn--close">close</button>
-            <button class="modal-btn modal-btn--confirm">confirm</button>
-          </div>
+        <div class="modal-footer">
+          <button class="modal-btn modal-btn--close">close</button>
+          <button class="modal-btn modal-btn--confirm">confirm</button>
         </div>
-      </section>
-    </main>
-    <script src="../scripts/modal.js"></script>
-  </body>
+      </div>
+    </section>
+  </main>
+  <script src="../scripts/modal.js"></script>
 </Layout>
