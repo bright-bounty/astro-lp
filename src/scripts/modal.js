@@ -6,7 +6,7 @@ function modal() {
   const closeModalBtn = document.querySelector(".modal-btn--close");
   const closeModalIcon = document.querySelector(".modal-icon--close");
 
-  function closeModal() {
+  function close() {
     modalContent.classList.remove("modal--show");
     heroContent.classList.remove("blur");
   }
@@ -15,9 +15,9 @@ function modal() {
     heroContent.classList.add("blur");
   });
 
-  closeModalBtn.addEventListener("click", closeModal);
-
-  closeModalIcon.addEventListener("click", closeModal);
+  [closeModalBtn, closeModalIcon].forEach((closeModal) =>
+    closeModal.addEventListener("click", close)
+  );
 }
 
 document.addEventListener("DOMContentLoaded", modal);
