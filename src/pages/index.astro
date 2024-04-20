@@ -17,6 +17,9 @@ import "../index.scss";
           <button class="hero--cta">Check offer</button>
         </div>
         <div id="modal" class="modal">
+          <button class="modal-icon--close">
+            <img src="../cross.svg" alt="cross icon" />
+          </button>
           <h2 class="modal--title">Modal title</h2>
           <p class="modal--description">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ea
@@ -27,13 +30,12 @@ import "../index.scss";
             odit beatae! Sint, voluptatum?
           </p>
           <div class="modal__btns">
-            <button class="modal-btn--confirm modal-btn">confirm</button>
-            <button class="modal-btn--close modal-btn">close</button>
+            <button class="modal-btn modal-btn--close">close</button>
+            <button class="modal-btn modal-btn--confirm">confirm</button>
           </div>
-          <img src="../cross.svg" alt="cross icon" class="modal-icon--close" />
         </div>
       </section>
     </main>
-    <script src="../scripts/modal.js"></script>;
+    <script src="../scripts/modal.js"></script>
   </body>
 </Layout>

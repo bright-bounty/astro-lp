@@ -95,14 +95,13 @@ body {
   height: 48px;
   top: 0;
   right: 0;
-  cursor: pointer;
 }
 
 .modal--show {
   display: flex;
 }
 
-.blure {
+.blur {
   filter: blur(3px);
 }
 

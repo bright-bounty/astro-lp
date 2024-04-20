@@ -1,5 +1,3 @@
-console.log(`object`);
-
 function modal() {
   const heroContent = document.querySelector(".hero__content");
   const modalContent = document.querySelector("#modal");
@@ -8,20 +6,18 @@ function modal() {
   const closeModalBtn = document.querySelector(".modal-btn--close");
   const closeModalIcon = document.querySelector(".modal-icon--close");
 
+  function closeModal() {
+    modalContent.classList.remove("modal--show");
+    heroContent.classList.remove("blur");
+  }
   checkOfferBtn.addEventListener("click", () => {
     modalContent.classList.add("modal--show");
-    heroContent.classList.add("blure");
+    heroContent.classList.add("blur");
   });
 
-  closeModalBtn.addEventListener("click", () => {
-    modalContent.classList.remove("modal--show");
-    heroContent.classList.remove("blure");
-  });
+  closeModalBtn.addEventListener("click", closeModal);
 
-  closeModalIcon.addEventListener("click", () => {
-    modalContent.classList.remove("modal--show");
-    heroContent.classList.remove("blure");
-  });
+  closeModalIcon.addEventListener("click", closeModal);
 }
 
 document.addEventListener("DOMContentLoaded", modal);
