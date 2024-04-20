@@ -2,9 +2,9 @@ function modal() {
   const heroContent = document.querySelector(".hero__content");
   const modalContent = document.querySelector("#modal");
   const checkOfferBtn = document.querySelector(".hero--cta");
-  const confrimModalBtn = document.querySelector(".modal-btn--confirm");
-  const closeModalBtn = document.querySelector(".modal-btn--close");
-  const closeModalIcon = document.querySelector(".modal-icon--close");
+  const confrimModalBtn = modalContent.querySelector(".modal-btn--confirm");
+  const closeModalBtn = modalContent.querySelector(".modal-btn--close");
+  const closeModalIcon = modalContent.querySelector(".modal-icon--close");
 
   function close() {
     modalContent.classList.remove("modal--show");
