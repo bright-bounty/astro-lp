@@ -4,15 +4,36 @@ import "../index.scss";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-<section class="hero container">
-  <div class="hero__content">
-    <h1 class="hero--title">Travel without limits!</h1>
-      <p class="hero--description">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta ut facere aliquam impedit ullam minusreprehenderit quia in laudantium sint.</p>
-       <button class="hero--cta">Check offer</button>
-  </div>
-    </section>
-  </main>
+  <body>
+    <main>
+      <section class="hero container">
+        <div class="hero__content">
+          <h1 class="hero--title">Travel without limits!</h1>
+          <p class="hero--description">
+            Lorem, ipsum dolor sit amet consecte tur adipisicing elit. Soluta ut
+            facere aliquam impedit ullam minusreprehenderit quia in laudantium
+            sint.
+          </p>
+          <button class="hero--cta">Check offer</button>
+        </div>
+        <div id="modal" class="modal">
+          <h2 class="modal--title">Modal title</h2>
+          <p class="modal--description">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ea
+            consequuntur cupiditate sequi. Ipsa iste dignissimos, odit natus
+            nisi quod ipsam dolorum quae temporibus similique expedita error ad
+            quo corporis ipsum ea cumque provident, accusantium quia
+            perspiciatis? Id pariatur eligendi ex nisi quos magnam non ipsum
+            odit beatae! Sint, voluptatum?
+          </p>
+          <div class="modal__btns">
+            <button class="modal-btn--confirm modal-btn">confirm</button>
+            <button class="modal-btn--close modal-btn">close</button>
+          </div>
+          <img src="../cross.svg" alt="cross icon" class="modal-icon--close" />
+        </div>
+      </section>
+    </main>
+    <script src="../scripts/modal.js"></script>;
+  </body>
 </Layout>
-  
