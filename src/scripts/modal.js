@@ -21,3 +21,9 @@ function modal() {
 }
 
 document.addEventListener("DOMContentLoaded", modal);
+
+const modalContent = document.querySelector(".modal-content");
+
+if (modalContent.scrollWidth > modalContent.innerWidth) {
+  console.log(`object`);
+}
