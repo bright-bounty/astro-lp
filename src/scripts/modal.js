@@ -18,7 +18,9 @@ function modal() {
   [closeModalBtn, closeModalIcon].forEach((closeModal) =>
     closeModal.addEventListener("click", close)
   );
+
+  document.addEventListener("mousedown", (e) => {
+    modalContent.contains(e.target) ? "" : close();
+  });
 }
-
 document.addEventListener("DOMContentLoaded", modal);
-
