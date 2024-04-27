@@ -9,18 +9,29 @@ function modal() {
   function close() {
     modalContent.classList.remove("modal--show");
     heroContent.classList.remove("blur");
+
+    checkOfferBtn.disabled = false;
+
+    document.removeEventListener("click", closeOutside, true);
   }
-  checkOfferBtn.addEventListener("click", () => {
+
+  function open() {
     modalContent.classList.add("modal--show");
     heroContent.classList.add("blur");
-  });
+
+    checkOfferBtn.disabled = true;
+
+    document.addEventListener("click", closeOutside, true);
+  }
+
+  function closeOutside(e) {
+    modalContent.contains(e.target) ? "" : close();
+  }
+
+  checkOfferBtn.addEventListener("click", open);
 
   [closeModalBtn, closeModalIcon].forEach((closeModal) =>
     closeModal.addEventListener("click", close)
   );
-
-  document.addEventListener("mousedown", (e) => {
-    modalContent.contains(e.target) ? "" : close();
-  });
 }
 document.addEventListener("DOMContentLoaded", modal);
