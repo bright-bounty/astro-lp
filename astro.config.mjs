@@ -4,5 +4,6 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: "https://bright-bounty.astro-lp.github.io"
+  site: "https://bright-bounty.github.io",
+  base: "astro-lp"
 });
