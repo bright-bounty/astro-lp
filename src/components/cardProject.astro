@@ -16,6 +16,12 @@ const {
   description,
   skills,
 } = Astro.props;
+
+const skillToCSS = {
+  HTML: "text-orange-600",
+  CSS: "text-blue-600",
+  JavaScript: "text-yellow-600",
+};
 ---
 
 <div class="p-6 flex flex-col items-center gap-x-6 shadow-md">
@@ -34,14 +40,8 @@ const {
     <ul class="w-full flex justify-around absolute bottom-0">
       {
         skills.map((skill) => {
-          const object = {
-            HTML: <li class="text-orange-600">{skill}</li>,
-            CSS: <li class="text-blue-600">{skill}</li>,
-            JavaScript: <li class="text-yellow-600">{skill}</li>,
-          };
-
-          return object[skill] ? (
-            object[skill]
+          return skillToCSS[skill] ? (
+            <li class={skillToCSS[skill]}>{skill}</li>
           ) : (
             <li class="text-cyan-600">{skill}</li>
           );
