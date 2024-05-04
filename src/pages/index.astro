@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import "../index.scss";
 import CardProject from "../components/CardProject.astro";
 
+const baseSkills = ["HTML", "CSS", "JavaScript"];
+
 const weatherCard = {
   img: {
     src: "astro-lp/project_1.png",
@@ -11,7 +13,7 @@ const weatherCard = {
   title: "Weather App",
   description:
     "Stay ahead of the forecast with our intuitive weather app. Get real-time updates on current conditions, hourly forecasts, and daily outlooks. Plan your day confidently with accurate weather information at your fingertips. Never be caught off guard by the elements again!",
-  skills: ["HTML", "CSS", "JavaScript"],
+  skills: baseSkills,
 };
 
 const calculatorCard = {
@@ -22,7 +24,7 @@ const calculatorCard = {
   title: "Age calculator",
   description:
     "AgeEase: Instantly calculate your age or anyone else' s with precision and simplicity. Whether you're celebrating milestones or planning events, keeps track of the years, months, and days. Effortlessly determine ages for birthdays, anniversaries, or any special occasion.",
-  skills: ["HTML", "CSS", "JavaScript"],
+  skills: baseSkills,
 };
 
 const realEstateCard = {
@@ -34,7 +36,7 @@ const realEstateCard = {
   title: "Real Estate",
   description:
     "Introducing Real Estate: Your trusted partner in real estate management. From residential complexes to commercial spaces, we offer comprehensive property management services tailored to meet your needs. With a focus on efficiency, transparency, and maximizing property value.",
-  skills: ["HTML", "CSS", "JavaScript"],
+  skills: baseSkills,
 };
 
 const forestCard = {
@@ -45,7 +47,7 @@ const forestCard = {
   title: "Forest Group",
   description:
     "Welcome to Forest Group: Your digital oasis for landscaped parks. Explore lush green spaces, tranquil gardens, and vibrant landscapes from the comfort of your screen. Discover inspiration for your next outdoor adventure, family picnic, or leisurely stroll.",
-  skills: ["HTML", "CSS", "JavaScript"],
+  skills: baseSkills,
 };
 
 const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
@@ -122,12 +124,7 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
             {
               cards.map((card) => (
                 <li class="flex justify-stretch">
-                  <CardProject
-                    img={card.img}
-                    title={card.title}
-                    description={card.description}
-                    skills={card.skills}
-                  />
+                  <CardProject card={card} />
                 </li>
               ))
             }

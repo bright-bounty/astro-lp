@@ -1,22 +1,26 @@
 ---
 interface Props {
-  img: {
-    src: string;
-    alt: string;
+  card: {
+    img: {
+      src: string;
+      alt: string;
+    };
+    title: string;
+    description: string;
+    skills: Array<string>;
   };
-  title: string;
-  description: string;
-  skills: Array<string>;
 }
+
+const { card } = Astro.props;
 
 const {
   img: { src, alt },
   title,
   description,
   skills,
-} = Astro.props;
+} = card;
 
-const skillToCSS = {
+const mapSkillToCss = {
   HTML: "text-orange-600",
   CSS: "text-blue-600",
   JavaScript: "text-yellow-600",
@@ -39,8 +43,8 @@ const skillToCSS = {
     <ul class="w-full flex justify-around absolute bottom-0">
       {
         skills.map((skill) =>
-          skillToCSS[skill] ? (
-            <li class={skillToCSS[skill]}>{skill}</li>
+          mapSkillToCss[skill] ? (
+            <li class={mapSkillToCss[skill]}>{skill}</li>
           ) : (
             <li class="text-cyan-600">{skill}</li>
           )
