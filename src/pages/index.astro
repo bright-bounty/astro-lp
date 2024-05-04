@@ -1,11 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../index.scss";
+import Navigation from "../components/Navigation.astro";
 ---
 
-<Layout title="My portfolio" description="Portfolio presents my current programming skills, knowledge and stack" >
+<Layout
+  title="My portfolio"
+  description="Portfolio presents my current programming skills, knowledge and stack"
+>
+  <header>
+    <Navigation />
+  </header>
   <main>
-    <section class="hero container">
+    <section class="hero container" id="home">
       <div class="hero__content">
         <h1 class="hero--title">Travel without limits!</h1>
         <p class="hero--description">

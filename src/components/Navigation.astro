@@ -1,0 +1,29 @@
+<nav class="fixed flex justify-center w-screen h-10 bg-sky-500">
+  <div class="flex justify-end items-center">
+    <button
+      id="burger-menu"
+      class="absolute top-1/2 right-1 -translate-y-1/2 max-h-full overflow-hidden cursor-pointer flex items-center justify-center z-20 md:hidden"
+    >
+      <div class="flex flex-col justify-between w-[26px] h-[20px]">
+        <div class="bg-black h-[2px] transform transition-all origin-left top">
+        </div>
+        <div class="bg-black h-[2px] transform transition-all middle"></div>
+        <div
+          class="bg-black h-[2px] transform transition-all origin-left bottom"
+        >
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <div class="flex md:max-w-6xl">
+    <ul
+      id="navigation-list"
+      class="flex flex-col justify-around items-center h-screen w-screen text-3xl bg-slate-100 z-10 translate-x-full duration-500 md:h-10 md:mr-10 md:justify-end md:flex-row md:text-lg md:bg-inherit md:text-black md:translate-x-0"
+    >
+      <li class="m-10"><a href="#home">Home</a></li>
+      <li class="m-10"><a href="#portfolio">Portfolio</a></li>
+      <li class="m-10"><a href="#tbd">TBD</a></li>
+    </ul>
+  </div>
+</nav>
