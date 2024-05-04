@@ -2,12 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import "../index.scss";
 import CardProject from "../components/CardProject.astro";
-
 const baseSkills = ["HTML", "CSS", "JavaScript"];
 
 const weatherCard = {
   img: {
-    src: "astro-lp/project_1.png",
+    src: `${import.meta.env.BASE_URL}/project_1.png`,
     alt: "Weather App Layout",
   },
   title: "Weather App",
@@ -18,7 +17,7 @@ const weatherCard = {
 
 const calculatorCard = {
   img: {
-    src: "astro-lp/project_2.png",
+    src: `${import.meta.env.BASE_URL}/project_2.png`,
     alt: "Age calculator Layout",
   },
   title: "Age calculator",
@@ -29,7 +28,7 @@ const calculatorCard = {
 
 const realEstateCard = {
   img: {
-    src: "astro-lp/project_3.png",
+    src: `${import.meta.env.BASE_URL}/project_3.png`,
     alt: "Real Estate welcome page",
   },
 
@@ -41,7 +40,7 @@ const realEstateCard = {
 
 const forestCard = {
   img: {
-    src: "astro-lp/project_4.png",
+    src: `${import.meta.env.BASE_URL}/project_4.png`,
     alt: "Forest Group welcome page",
   },
   title: "Forest Group",
@@ -72,7 +71,10 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
         <div class="modal-container">
           <div class="modal-header">
             <button class="modal-icon--close">
-              <img src=" /astro-lp/cross.svg" alt="cross icon" />
+              <img
+                src=`${import.meta.env.BASE_URL}/cross.svg`
+                alt="cross icon"
+              />
               <span class="sr-only">Cross icon to close modal</span>
             </button>
             <h2 class="modal--title">Modal title</h2>

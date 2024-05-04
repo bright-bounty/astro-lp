@@ -11,14 +11,15 @@ interface Props {
   };
 }
 
-const { card } = Astro.props;
-
 const {
-  img: { src, alt },
-  title,
-  description,
-  skills,
-} = card;
+  card,
+  card: {
+    img: { src, alt },
+    title,
+    description,
+    skills,
+  },
+} = Astro.props;
 
 const mapSkillToCss = {
   HTML: "text-orange-600",
