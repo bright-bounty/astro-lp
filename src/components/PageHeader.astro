@@ -1,0 +1,47 @@
+<nav class="fixed flex flex-col h-10 w-screen bg-sky-500">
+  <div class="flex min-w-full justify-end my-2 z-10 md:hidden">
+    <button
+      id="mobile-navigation"
+      class="mr-2 cursor-pointer flex items-center justify-center"
+    >
+      <div class="nav-bars">
+        <div class="nav-bar"></div>
+        <div class="nav-bar"></div>
+        <div class="nav-bar"></div>
+      </div>
+    </button>
+  </div>
+
+  <div class="flex justify-center">
+    <ul
+      id="navigation-list"
+      class="nav-hover flex flex-col justify-around items-center w-screen h-screen text-3xl bg-slate-100 z-10 duration-500 md:flex-row md:h-10 md:max-w-6xl md:justify-end md:bg-inherit md:text-base"
+    >
+      <li class="m-10"><a href="#home">Home</a></li>
+      <li class="m-10"><a href="#portfolio">Portfolio</a></li>
+      <li class="m-10"><a href="#tbd">TBD</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav-bar {
+    @apply bg-black h-[2px] transform transition-all origin-left;
+  }
+
+  .nav-bars {
+    @apply flex flex-col justify-between w-[26px] h-[20px];
+  }
+
+  .nav-hover {
+    @apply translate-x-full md:translate-x-0;
+  }
+
+  .rotate-right {
+    @apply rotate-[45deg];
+  }
+
+  .rotate-left {
+    @apply -rotate-[45deg];
+  }
+</style>

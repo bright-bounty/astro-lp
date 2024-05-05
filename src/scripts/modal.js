@@ -31,29 +31,3 @@ function modal() {
     closeModal.addEventListener("click", close),
   );
 }
-
-function burgerNavigation() {
-  const burger = document.getElementById("burger-menu");
-  const navigation = document.getElementById("navigation-list");
-  const top = burger.querySelector(".top");
-  const middle = burger.querySelector(".middle");
-  const bottom = burger.querySelector(".bottom");
-  const allLinks = navigation.querySelectorAll("li");
-
-  function toogle() {
-    navigation.classList.toggle("translate-x-0");
-    top.classList.toggle("rotate-[45deg]");
-    middle.classList.toggle("-translate-x-20");
-    bottom.classList.toggle("-rotate-[45deg]");
-    document.querySelector("body").classList.toggle("overflow-y-hidden");
-  }
-
-  allLinks.forEach((link) => {
-    link.addEventListener("click", toogle);
-  });
-
-  burger.addEventListener("click", toogle);
-}
-
-document.addEventListener("DOMContentLoaded", modal);
-document.addEventListener("DOMContentLoaded", burgerNavigation);

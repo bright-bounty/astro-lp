@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../index.scss";
-import Navigation from "../components/Navigation.astro";
+import Navigation from "../components/PageHeader.astro";
 ---
 
 <Layout
@@ -9,10 +9,12 @@ import Navigation from "../components/Navigation.astro";
   description="Portfolio presents my current programming skills, knowledge and stack"
 >
   <header>
-    <Navigation />
+    <div class="container flex justify-center">
+      <Navigation />
+    </div>
   </header>
   <main>
-    <section class="hero container" id="home">
+    <section class="hero container p-24" id="home">
       <div class="hero__content">
         <h1 class="hero--title">Travel without limits!</h1>
         <p class="hero--description">
@@ -48,6 +50,40 @@ import Navigation from "../components/Navigation.astro";
         </div>
       </div>
     </section>
+    <section>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis sint
+      quasi, nam suscipit voluptatibus unde vel aliquid? Ratione est quidem non
+      eos eum maiores praesentium totam explicabo? Debitis accusamus placeat et
+      deleniti beatae ratione temporibus tenetur ullam praesentium quos vel
+      pariatur saepe, ipsa odit a, odio ad. Perspiciatis delectus possimus vero
+      commodi obcaecati vitae labore dolores soluta, voluptas expedita beatae
+      consequuntur, natus repellendus autem nam numquam reprehenderit at fugiat
+      dolor ex maiores! Neque nam eius iste, accusamus facere quae nemo
+      excepturi! Sunt temporibus porro, praesentium pariatur ipsum corrupti
+      atque in earum beatae? Numquam quasi et delectus voluptates? Accusantium
+      dignissimos omnis placeat, eligendi minus provident? Nostrum totam tenetur
+      exercitationem aspernatur deleniti repellendus voluptatum optio pariatur
+      impedit natus fugiat ab deserunt facilis vitae minima quisquam omnis
+      consectetur quam, labore culpa? Labore optio nostrum laudantium quo
+      dolorem iure illum deserunt sequi doloribus quos sapiente eos quae,
+      laboriosam perspiciatis saepe est excepturi accusamus similique officia
+      sed veniam culpa. Nemo quo magni in quia vel fugit dolorem, unde deleniti
+      tempora vero quis reiciendis eligendi quae sit aliquam eaque! Perspiciatis
+      magnam, autem tempora voluptate ad ipsum possimus at nesciunt earum
+      nostrum molestiae nihil nisi voluptatibus in tempore perferendis
+      laudantium saepe ex qui error expedita consequuntur unde eos. Optio velit
+      beatae aspernatur ab! Minus quis magnam doloribus repellendus ipsum natus
+      ut rerum alias, labore officia, praesentium aperiam ab cupiditate quos
+      fugit. Amet ducimus quibusdam porro dignissimos ab vel obcaecati eius
+      assumenda, iusto beatae aut perferendis non vero aliquam quidem excepturi
+      est maiores possimus consectetur, hic culpa eligendi commodi! Expedita nam
+      illum iste nostrum quidem doloribus, cum dicta eos esse accusantium vero
+      cumque reprehenderit autem neque ullam. Dignissimos minus odit fuga nobis,
+      quaerat laudantium voluptates, fugit accusamus nisi libero consequatur
+      error doloribus laborum officia consequuntur ut ullam ex dicta! Eos
+      eveniet voluptas quae eaque dolore error natus asperiores.
+    </section>
   </main>
   <script src="../scripts/modal.js"></script>
+  <script src="../scripts/hamburger.js"></script>
 </Layout>
