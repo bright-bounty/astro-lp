@@ -1,10 +1,62 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../index.scss";
+import CardProject from "../components/CardProject.astro";
+const baseSkills = ["HTML", "CSS", "JavaScript"];
+
+const weatherCard = {
+  img: {
+    src: `${import.meta.env.BASE_URL}/project_1.png`,
+    alt: "Weather App Layout",
+  },
+  title: "Weather App",
+  description:
+    "Stay ahead of the forecast with our intuitive weather app. Get real-time updates on current conditions, hourly forecasts, and daily outlooks. Plan your day confidently with accurate weather information at your fingertips. Never be caught off guard by the elements again!",
+  skills: baseSkills,
+};
+
+const calculatorCard = {
+  img: {
+    src: `${import.meta.env.BASE_URL}/project_2.png`,
+    alt: "Age calculator Layout",
+  },
+  title: "Age calculator",
+  description:
+    "AgeEase: Instantly calculate your age or anyone else' s with precision and simplicity. Whether you're celebrating milestones or planning events, keeps track of the years, months, and days. Effortlessly determine ages for birthdays, anniversaries, or any special occasion.",
+  skills: baseSkills,
+};
+
+const realEstateCard = {
+  img: {
+    src: `${import.meta.env.BASE_URL}/project_3.png`,
+    alt: "Real Estate welcome page",
+  },
+
+  title: "Real Estate",
+  description:
+    "Introducing Real Estate: Your trusted partner in real estate management. From residential complexes to commercial spaces, we offer comprehensive property management services tailored to meet your needs. With a focus on efficiency, transparency, and maximizing property value.",
+  skills: baseSkills,
+};
+
+const forestCard = {
+  img: {
+    src: `${import.meta.env.BASE_URL}/project_4.png`,
+    alt: "Forest Group welcome page",
+  },
+  title: "Forest Group",
+  description:
+    "Welcome to Forest Group: Your digital oasis for landscaped parks. Explore lush green spaces, tranquil gardens, and vibrant landscapes from the comfort of your screen. Discover inspiration for your next outdoor adventure, family picnic, or leisurely stroll.",
+  skills: baseSkills,
+};
+
+const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
 ---
 
-<Layout title="My portfolio" description="Portfolio presents my current programming skills, knowledge and stack" >
-  <main>
+<Layout
+  title="My portfolio"
+  description="Portfolio presents my current programming skills, knowledge and stack"
+>
+  <main class="flex flex-col justify-center items-center">
     <section class="hero container">
       <div class="hero__content">
         <h1 class="hero--title">Travel without limits!</h1>
@@ -19,7 +71,10 @@ import "../index.scss";
         <div class="modal-container">
           <div class="modal-header">
             <button class="modal-icon--close">
-              <img src=" /astro-lp/cross.svg" alt="cross icon" />
+              <img
+                src=`${import.meta.env.BASE_URL}/cross.svg`
+                alt="cross icon"
+              />
               <span class="sr-only">Cross icon to close modal</span>
             </button>
             <h2 class="modal--title">Modal title</h2>
@@ -38,6 +93,44 @@ import "../index.scss";
             <button class="modal-btn modal-btn--close">close</button>
             <button class="modal-btn modal-btn--confirm">confirm</button>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="projects w-full max-h-none flex flex-col items-center p-8 bg-gradient-to-r from-blue-300 to-blue-200"
+    >
+      <div class="max-w-6xl">
+        <h2 class="title mb-12 text-4xl font-semibold">
+          Portfolio Highlights: Showcasing My Work
+        </h2>
+        <p class="mb-6 text-base">
+          Welcome to my Portfolio Highlights section, where I present a curated
+          selection of my finest work. Here, you'll find a collection of
+          projects that showcase my skills, creativity, and expertise. From
+          innovative designs to successful campaigns, each project reflects my
+          dedication to delivering high-quality results and exceeding
+          expectations.
+        </p>
+        <p class="mb-6 text-base">
+          Explore this gallery to gain insight into my capabilities and see how
+          I can bring value to your projects. Whether you're seeking design
+          inspiration, marketing strategies, or technical solutions, my
+          portfolio highlights demonstrate my ability to tackle diverse
+          challenges and deliver outstanding outcomes. Dive in and discover the
+          depth of my professional experience and the breadth of my creative
+          vision.
+        </p>
+        <div class="mt-24">
+          <ul class="grid md:grid-cols-2 gap-8 md:gap-16">
+            {
+              cards.map((card) => (
+                <li class="flex justify-stretch">
+                  <CardProject card={card} />
+                </li>
+              ))
+            }
+          </ul>
         </div>
       </div>
     </section>
