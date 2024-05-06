@@ -10,6 +10,7 @@ function modal() {
     heroContent.classList.remove("blur");
     checkOfferBtn.disabled = false;
     document.removeEventListener("click", closeOutside, true);
+    document.body.classList.remove("overflow-y-hidden");
   }
 
   function closeOutside(e) {
@@ -23,12 +24,13 @@ function modal() {
     heroContent.classList.add("blur");
     checkOfferBtn.disabled = true;
     document.addEventListener("click", closeOutside, true);
+    document.body.classList.add("overflow-y-hidden");
   }
 
   checkOfferBtn.addEventListener("click", open);
 
   [closeModalBtn, closeModalIcon].forEach((closeModal) =>
-    closeModal.addEventListener("click", close)
+    closeModal.addEventListener("click", close),
   );
 }
 document.addEventListener("DOMContentLoaded", modal);
