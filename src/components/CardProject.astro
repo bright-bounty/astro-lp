@@ -1,0 +1,55 @@
+---
+interface Props {
+  card: {
+    img: {
+      src: string;
+      alt: string;
+    };
+    title: string;
+    description: string;
+    skills: Array<string>;
+  };
+}
+
+const {
+  card: {
+    img: { src, alt },
+    title,
+    description,
+    skills,
+  },
+} = Astro.props;
+
+const mapSkillToCss = {
+  HTML: "text-orange-600",
+  CSS: "text-blue-600",
+  JavaScript: "text-yellow-600",
+};
+---
+
+<div class="p-6 flex flex-col items-center gap-x-6 shadow-md">
+  <div class="h-64">
+    <img class="rounded-3xl w-64 h-64" src={src} alt={alt} />
+  </div>
+  <div class="relative h-full pb-8">
+    <h3
+      class="mt-6 text-lg font-semibold leading-7 tracking-tight text-gray-900"
+    >
+      {title}
+    </h3>
+    <p class="text-base font-semibold leading-6 text-slate-700 my-8">
+      {description}
+    </p>
+    <ul class="w-full flex justify-around absolute bottom-0">
+      {
+        skills.map((skill) =>
+          mapSkillToCss[skill] ? (
+            <li class={mapSkillToCss[skill]}>{skill}</li>
+          ) : (
+            <li class="text-cyan-600">{skill}</li>
+          )
+        )
+      }
+    </ul>
+  </div>
+</div>
