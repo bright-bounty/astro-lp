@@ -1,7 +1,9 @@
 <header>
-  <div class="container flex justify-center pt-0">
-    <nav class="fixed flex flex-col h-10 w-screen bg-sky-500">
-      <div class="flex min-w-full justify-end my-2 z-10 md:hidden">
+  <div class="container flex fixed justify-center !max-w-full !p-0 z-10">
+    <nav class="flex flex-col h-10 w-screen bg-sky-500">
+      <div
+        class="flex min-w-full min-h-full justify-end items-center md:hidden"
+      >
         <button
           id="mobile-navigation"
           class="mr-2 cursor-pointer flex items-center justify-center"
@@ -17,7 +19,7 @@
       <div class="flex justify-center">
         <ul
           id="navigation-list"
-          class="nav-hover flex flex-col justify-around items-center w-screen h-screen text-3xl bg-slate-100 z-10 duration-500 md:flex-row md:h-10 md:max-w-6xl md:justify-end md:bg-inherit md:text-base"
+          class="nav-close flex flex-col justify-around items-center w-screen h-screen text-3xl bg-slate-100 duration-500 md:flex-row md:h-10 md:max-w-6xl md:justify-end md:bg-inherit md:text-base"
         >
           <li class="m-10"><a href="#home">Home</a></li>
           <li class="m-10"><a href="#portfolio">Portfolio</a></li>
@@ -37,15 +39,44 @@
     @apply flex flex-col justify-between w-[26px] h-5;
   }
 
-  .nav-hover {
+  .nav-close {
     @apply translate-x-full md:translate-x-0;
   }
 
-  .rotate-right {
-    @apply rotate-[45deg];
-  }
+  body[data-navigation-open="true"] {
+    @apply overflow-y-hidden;
 
-  .rotate-left {
-    @apply -rotate-[45deg];
+    .nav-bar:nth-child(1) {
+      @apply rotate-[45deg];
+    }
+    .nav-bar:nth-child(2) {
+      @apply hidden;
+    }
+    .nav-bar:nth-child(3) {
+      @apply -rotate-[45deg];
+    }
   }
 </style>
+
+<script>
+  function burgerList() {
+    const mobileIcon = document.getElementById("mobile-navigation");
+    const list = document.getElementById("navigation-list");
+    const listItems = list?.querySelectorAll("li");
+
+    function toogle() {
+      list?.classList.toggle("nav-close");
+      document.body.dataset.navigationOpen === "false"
+        ? (document.body.dataset.navigationOpen = "true")
+        : (document.body.dataset.navigationOpen = "false");
+    }
+
+    listItems?.forEach((link) => {
+      link.addEventListener("click", toogle);
+    });
+
+    mobileIcon?.addEventListener("click", toogle);
+  }
+
+  document.addEventListener("DOMContentLoaded", burgerList);
+</script>

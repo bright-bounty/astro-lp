@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import "../index.scss";
 import CardProject from "../components/CardProject.astro";
+import PageHeader from "../components/PageHeader.astro";
 const baseSkills = ["HTML", "CSS", "JavaScript"];
 
 const weatherCard = {
@@ -56,8 +57,9 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
   title="My portfolio"
   description="Portfolio presents my current programming skills, knowledge and stack"
 >
+  <PageHeader />
   <main class="flex flex-col justify-center items-center">
-    <section class="hero container">
+    <section class="hero container" id="home">
       <div class="hero__content">
         <h1 class="hero--title">Travel without limits!</h1>
         <p class="hero--description">
@@ -99,6 +101,7 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
 
     <section
       class="projects w-full max-h-none flex flex-col items-center p-8 bg-gradient-to-r from-blue-300 to-blue-200"
+      id="portfolio"
     >
       <div class="max-w-6xl">
         <h2 class="title mb-12 text-4xl font-semibold">
@@ -136,5 +139,5 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
     </section>
   </main>
   <script src="../scripts/modal.js"></script>
-  <script src="../scripts/hamburger.js"></script>
+  <!-- <script src="../scripts/hamburger.js"></script> -->
 </Layout>

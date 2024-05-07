@@ -28,6 +28,7 @@ function modal() {
   checkOfferBtn.addEventListener("click", open);
 
   [closeModalBtn, closeModalIcon].forEach((closeModal) =>
-    closeModal.addEventListener("click", close),
+    closeModal.addEventListener("click", close)
   );
 }
+document.addEventListener("DOMContentLoaded", modal);
