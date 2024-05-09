@@ -1,12 +1,15 @@
-<header>
-  <div class="container flex fixed justify-center !max-w-full !p-0 z-10">
-    <nav class="flex flex-col h-10 w-screen bg-sky-500">
-      <div
-        class="flex min-w-full min-h-full justify-end items-center md:hidden"
-      >
+<header
+  class="fixed top-0 left-0 bg-sky-500 min-w-full flex justify-center z-10"
+>
+  <div class="container !p-0">
+    <nav class="flex flex-col h-10 md:flex-row md:justify-between">
+      <div class="flex min-h-full justify-between items-center px-2">
+        <div>
+          <p><a href="#home">MyPortfolio</a></p>
+        </div>
         <button
           id="mobile-navigation"
-          class="mr-2 cursor-pointer flex items-center justify-center"
+          class="cursor-pointer flex items-center justify-center md:hidden"
         >
           <div class="nav-bars">
             <div class="nav-bar"></div>
@@ -15,11 +18,10 @@
           </div>
         </button>
       </div>
-
-      <div class="flex justify-center">
+      <div class="flex justify-center max-w-full">
         <ul
           id="navigation-list"
-          class="nav-close flex flex-col justify-around items-center w-screen h-screen text-3xl bg-slate-100 duration-500 md:flex-row md:h-10 md:max-w-6xl md:justify-end md:bg-inherit md:text-base"
+          class="nav-close flex flex-col justify-around items-center w-screen h-screen text-3xl bg-slate-100 duration-500 md:flex-row md:h-10 md:w-auto md:bg-inherit md:text-base"
         >
           <li class="m-10"><a href="#home">Home</a></li>
           <li class="m-10"><a href="#portfolio">Portfolio</a></li>
@@ -44,25 +46,25 @@
   }
 
   body[data-navigation-open="true"] {
-    @apply overflow-y-hidden;
+    @apply overflow-y-hidden md:overflow-auto;
 
     .nav-bar:nth-child(1) {
-      @apply rotate-[45deg];
+      @apply rotate-45;
     }
     .nav-bar:nth-child(2) {
       @apply hidden;
     }
     .nav-bar:nth-child(3) {
-      @apply -rotate-[45deg];
+      @apply -rotate-45;
     }
   }
 </style>
 
 <script>
-  function burgerList() {
-    const mobileIcon = document.getElementById("mobile-navigation");
-    const list = document.getElementById("navigation-list");
-    const listItems = list?.querySelectorAll("li");
+  function mobileNavigation() {
+    const btn = document.getElementById("mobile-navigation");
+    const list = document.getElementById("navigation-list")!;
+    const listItems = list.querySelectorAll("li");
 
     function toogle() {
       list?.classList.toggle("nav-close");
@@ -75,8 +77,8 @@
       link.addEventListener("click", toogle);
     });
 
-    mobileIcon?.addEventListener("click", toogle);
+    btn?.addEventListener("click", toogle);
   }
 
-  document.addEventListener("DOMContentLoaded", burgerList);
+  document.addEventListener("DOMContentLoaded", mobileNavigation);
 </script>
