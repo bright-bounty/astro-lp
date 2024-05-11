@@ -90,10 +90,36 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
               perspiciatis? Id pariatur eligendi ex nisi quos magnam non ipsum
               odit beatae! Sint, voluptatum?
             </p>
+            <button class="hero--cta">Check offer</button>
           </div>
-          <div class="modal-footer">
-            <button class="modal-btn modal-btn--close">close</button>
-            <button class="modal-btn modal-btn--confirm">confirm</button>
+          <div id="modal" class="modal-wrapper">
+            <div class="modal-container">
+              <div class="modal-header">
+                <button class="modal-icon--close">
+                  <img
+                    src=`${import.meta.env.BASE_URL}/cross.svg`
+                    alt="cross icon"
+                  />
+                  <span class="sr-only">Cross icon to close modal</span>
+                </button>
+                <h2 class="modal--title">Modal title</h2>
+              </div>
+              <div class="modal-content">
+                <p class="modal--description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Tempore ea consequuntur cupiditate sequi. Ipsa iste
+                  dignissimos, odit natus nisi quod ipsam dolorum quae
+                  temporibus similique expedita error ad quo corporis ipsum ea
+                  cumque provident, accusantium quia perspiciatis? Id pariatur
+                  eligendi ex nisi quos magnam non ipsum odit beatae! Sint,
+                  voluptatum?
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button class="modal-btn modal-btn--close">close</button>
+                <button class="modal-btn modal-btn--confirm">confirm</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
