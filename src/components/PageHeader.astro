@@ -1,7 +1,9 @@
-<header class="fixed top-0 left-0 bg-sky-500 w-full flex justify-center z-10">
-  <div class="container !px-0">
-    <nav class="flex flex-col h-10 md:flex-row md:justify-between">
-      <div class="flex min-h-full justify-between items-center px-2">
+<header class="fixed top-0 left-0 bg-sky-500 w-full z-50">
+  <div class="container py-4 md:py-8 relative z-20">
+    <nav class="flex min-h-10 md:flex-row md:justify-between">
+      <div
+        class="flex min-h-full w-full justify-between items-center md:w-auto"
+      >
         <div>
           <p><a href="#home">MyPortfolio</a></p>
         </div>
@@ -16,14 +18,14 @@
           </div>
         </button>
       </div>
-      <div class="flex justify-center max-w-full">
+      <div class="flex justify-center grow">
         <ul
           id="navigation-list"
-          class="nav-close flex flex-col justify-around items-center w-screen h-screen text-3xl bg-slate-100 duration-500 md:flex-row md:h-10 md:w-auto md:bg-inherit md:text-base"
+          class="absolute top-full left-0 bg-white z-10 flex-col w-full min-h-[calc(100vh_-40px)] min-h-[calc(100dvh_-40px)] items-center md:bg-inherit md:flex-row md:justify-end md:items-center md:min-h-10 md:top-0"
         >
-          <li class="m-10"><a href="#home">Home</a></li>
-          <li class="m-10"><a href="#portfolio">Portfolio</a></li>
-          <li class="m-10"><a href="#tbd">TBD</a></li>
+          <li class="m-12 md:my-0 self-center"><a href="#home">Home</a></li>
+          <li class="m-12 md:my-0"><a href="#portfolio">Portfolio</a></li>
+          <li class="m-12 md:my-0"><a href="#tbd">TBD</a></li>
         </ul>
       </div>
     </nav>
@@ -55,6 +57,15 @@
     .nav-bar:nth-child(3) {
       @apply -rotate-45;
     }
+
+    #navigation-list {
+      @apply flex;
+    }
+  }
+  body[data-navigation-open="false"] {
+    #navigation-list {
+      @apply hidden md:flex;
+    }
   }
 </style>
 
@@ -65,7 +76,6 @@
     const listItems = list.querySelectorAll("li");
 
     function toogle() {
-      list?.classList.toggle("nav-close");
       document.body.dataset.navigationOpen === "false"
         ? (document.body.dataset.navigationOpen = "true")
         : (document.body.dataset.navigationOpen = "false");
