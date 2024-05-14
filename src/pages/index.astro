@@ -49,6 +49,12 @@ const forestCard = {
   skills: baseSkills,
 };
 
+const modalContent = {
+  title: "Modal title",
+  description:
+    "Welcome to our portfolio showcase! Our portfolio represents a curated collection of our finest work, meticulously crafted to showcase our expertise, creativity, and dedication to excellence. Each project embodies our commitment to delivering solutions that exceed expectations and drive tangible results.",
+};
+
 const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
 ---
 
@@ -112,7 +118,13 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
       </div>
     </section>
   </main>
-  <Modal>
+  <Modal
+    modalContent={{
+      title: "Checking title",
+      description:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex repellendus fugit necessitatibus sit iusto, eligendi corrupti veniam temporibus tempora, cum perferendis ratione accusantium, quas dolore hic voluptatem odio.",
+    }}
+  >
     <h2 class="text-2xl md:text-4xl" slot="title">Modal title</h2>
     <p class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl">
       Welcome to our portfolio showcase! Our portfolio represents a curated

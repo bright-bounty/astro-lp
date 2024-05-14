@@ -23,16 +23,14 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <slot />
+    <p class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl">
+      {description}
+    </p>
   </body>
-</html>
 
-<style is:global>
-  /* .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  } */
-  body {
-    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-  }
-</style>
+  <style is:global>
+    body {
+      background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    }
+  </style>
+</html>
