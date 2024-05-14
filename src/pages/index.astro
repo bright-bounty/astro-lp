@@ -50,9 +50,9 @@ const forestCard = {
 };
 
 const modalContent = {
-  title: "Modal title",
+  title: "Checking title",
   description:
-    "Welcome to our portfolio showcase! Our portfolio represents a curated collection of our finest work, meticulously crafted to showcase our expertise, creativity, and dedication to excellence. Each project embodies our commitment to delivering solutions that exceed expectations and drive tangible results.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio praesentium quis veritatis repellendus quam. Quam atque ad sapiente similique accusantium pariatur veniam ipsum reprehenderit, aliquam tenetur recusandae excepturi, aut architecto?",
 };
 
 const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
@@ -118,15 +118,12 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
       </div>
     </section>
   </main>
-  <Modal
-    modalContent={{
-      title: "Checking title",
-      description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex repellendus fugit necessitatibus sit iusto, eligendi corrupti veniam temporibus tempora, cum perferendis ratione accusantium, quas dolore hic voluptatem odio.",
-    }}
-  >
+  <Modal modalContent={modalContent}>
     <h2 class="text-2xl md:text-4xl" slot="title">Modal title</h2>
-    <p class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl">
+    <p
+      class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl"
+      slot="description"
+    >
       Welcome to our portfolio showcase! Our portfolio represents a curated
       collection of our finest work, meticulously crafted to showcase our
       expertise, creativity, and dedication to excellence. Each project embodies

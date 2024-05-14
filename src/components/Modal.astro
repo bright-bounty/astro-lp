@@ -24,77 +24,71 @@ const {
         <img src=`${import.meta.env.BASE_URL}/cross.svg` alt="cross icon" />
         <span class="sr-only">Cross icon to close modal</span>
       </button>
-      {
-        (Astro.slots.has("title") && <slot name="title" />) || (
-          <h2 class="text-2xl md:text-4xl" slot="title">
-            {title}
-          </h2>
-        )
-      }
+      <slot name="title">
+        <h2 class="text-2xl md:text-4xl">{title}</h2>
+      </slot>
     </div>
     <div>
-      {
-        (Astro.slots.has("default") && <slot />) || (
-          <p class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl">
-            {description}
-          </p>
-        )
-      }
+      <slot name="description">
+        <p class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl">
+          {description}
+        </p>
+      </slot>
       <div class="mt-10 flex justify-between w-full">
         <button class="btn" id="btn-close">close</button>
         <button class="btn">confirm</button>
       </div>
     </div>
   </div>
-
-  <script>
-    function modal() {
-      const modalContent: HTMLElement = document.querySelector("#modal")!;
-      const checkOfferBtn: any = document.querySelector("#btn-offer");
-      const closeModalBtn = modalContent.querySelector("#btn-close")!;
-      const closeModalIcon = modalContent.querySelector("#icon-close")!;
-      const main = document.querySelector("#main");
-
-      function close() {
-        modalContent.dataset.show = "false";
-        checkOfferBtn.disabled = false;
-        main?.classList.remove("blur");
-        document.removeEventListener("click", closeOutside, true);
-      }
-
-      function closeOutside(e) {
-        if (!modalContent.contains(e.target)) {
-          close();
-        }
-      }
-
-      function open() {
-        modalContent.dataset.show = "true";
-        checkOfferBtn.disabled = true;
-        main?.classList.add("blur");
-        document.addEventListener("click", closeOutside, true);
-      }
-
-      checkOfferBtn.addEventListener("click", open);
-
-      [closeModalBtn, closeModalIcon].forEach((closeModal) =>
-        closeModal.addEventListener("click", close)
-      );
-    }
-    document.addEventListener("DOMContentLoaded", modal);
-  </script>
-
-  <style>
-    .btn {
-      @apply px-2 py-1 uppercase text-base bg-sky-300 border-sky-500 border-2 transition duration-300 hover:bg-sky-500 md:text-lg md:px-4 md:py-2;
-    }
-
-    #modal[data-show="true"] {
-      @apply block;
-    }
-
-    body:has(#modal[data-show="true"]) {
-      @apply overflow-hidden;
-    }
-  </style>
 </div>
+
+<script>
+  function modal() {
+    const modalContent: HTMLElement = document.querySelector("#modal")!;
+    const checkOfferBtn: any = document.querySelector("#btn-offer");
+    const closeModalBtn = modalContent.querySelector("#btn-close")!;
+    const closeModalIcon = modalContent.querySelector("#icon-close")!;
+    const main = document.querySelector("#main");
+
+    function close() {
+      modalContent.dataset.show = "false";
+      checkOfferBtn.disabled = false;
+      main?.classList.remove("blur");
+      document.removeEventListener("click", closeOutside, true);
+    }
+
+    function closeOutside(e) {
+      if (!modalContent.contains(e.target)) {
+        close();
+      }
+    }
+
+    function open() {
+      modalContent.dataset.show = "true";
+      checkOfferBtn.disabled = true;
+      main?.classList.add("blur");
+      document.addEventListener("click", closeOutside, true);
+    }
+
+    checkOfferBtn.addEventListener("click", open);
+
+    [closeModalBtn, closeModalIcon].forEach((closeModal) =>
+      closeModal.addEventListener("click", close)
+    );
+  }
+  document.addEventListener("DOMContentLoaded", modal);
+</script>
+
+<style>
+  .btn {
+    @apply px-2 py-1 uppercase text-base bg-sky-300 border-sky-500 border-2 transition duration-300 hover:bg-sky-500 md:text-lg md:px-4 md:py-2;
+  }
+
+  #modal[data-show="true"] {
+    @apply block;
+  }
+
+  body:has(#modal[data-show="true"]) {
+    @apply overflow-hidden;
+  }
+</style>
