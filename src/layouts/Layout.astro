@@ -8,7 +8,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth scroll-py-4">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -21,16 +21,13 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body data-navigation-open="false">
     <slot />
-    <p class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl">
-      {description}
-    </p>
   </body>
-
-  <style is:global>
-    body {
-      background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-    }
-  </style>
 </html>
+
+<style is:global>
+  body {
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  }
+</style>

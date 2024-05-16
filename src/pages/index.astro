@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import CardProject from "../components/CardProject.astro";
 import Modal from "../components/Modal.astro";
+import PageHeader from "../components/PageHeader.astro";
 const baseSkills = ["HTML", "CSS", "JavaScript"];
 
 const weatherCard = {
@@ -62,6 +63,7 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
   title="My portfolio"
   description="Portfolio presents my current programming skills, knowledge and stack"
 >
+  <PageHeader />
   <main class="flex flex-col justify-center items-center" id="main">
     <section>
       <div class="container">
