@@ -11,32 +11,33 @@ const {
 } = Astro.props;
 ---
 
-<div
-  id="modal"
-  class="fixed hidden top-1/2 left-1/2 max-w-2xl w-full -translate-x-1/2 -translate-y-1/2"
-  data-show="false"
->
-  <div
-    class="mx-8 p-6 relative flex flex-col bg-sky-200 border-sky-400 border-2 md:p-10"
-  >
-    <div class="flex justify-center">
-      <button class="p-2 absolute w-12 h-12 top-0 right-0" id="icon-close">
-        <img src=`${import.meta.env.BASE_URL}/cross.svg` alt="cross icon" />
-        <span class="sr-only">Cross icon to close modal</span>
-      </button>
-      <slot name="title">
-        <h2 class="text-2xl md:text-4xl">{title}</h2>
-      </slot>
-    </div>
-    <div>
-      <slot>
-        <p class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl">
-          {description}
-        </p>
-      </slot>
-      <div class="mt-10 flex justify-between w-full">
-        <button class="btn" id="btn-close">close</button>
-        <button class="btn">confirm</button>
+<div class="fixed hidden inset-0" data-visible="false" id="modal-wrapper">
+  <div class="absolute inset-0 backdrop-blur-sm z-10"></div>
+  <div class="absolute inset-0 z-20 flex justify-center items-center">
+    <div class="max-w-2xl w-full">
+      <div
+        class="modal-container mx-8 p-6 relative flex flex-col bg-sky-200 border-sky-400 border-2 md:p-10"
+      >
+        <div class="flex justify-center">
+          <button class="btn-close p-2 absolute w-12 h-12 top-0 right-0">
+            <img src=`${import.meta.env.BASE_URL}/cross.svg` alt="cross icon" />
+            <span class="sr-only">Cross icon to close modal</span>
+          </button>
+          <slot name="title">
+            <h2 class="text-2xl md:text-4xl">{title}</h2>
+          </slot>
+        </div>
+        <div>
+          <slot>
+            <p class="mt-8 text-base overflow-auto max-h-[40vh] md:text-xl">
+              {description}
+            </p>
+          </slot>
+          <div class="mt-10 flex justify-between w-full">
+            <button class="btn btn-close" type="button">close</button>
+            <button class="btn" type="submit">confirm</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -44,35 +45,31 @@ const {
 
 <script>
   function modal() {
-    const modalContent: HTMLElement = document.querySelector("#modal")!;
-    const checkOfferBtn: any = document.querySelector("#btn-offer");
-    const closeModalBtn = modalContent.querySelector("#btn-close")!;
-    const closeModalIcon = modalContent.querySelector("#icon-close")!;
-    const main = document.querySelector("#main");
+    const wrapper = document.querySelector<HTMLElement>("#modal-wrapper")!;
+    const container = document.querySelector<HTMLElement>(".modal-container")!;
+    const triggerBtn = document.querySelector<HTMLButtonElement>(".btn-offer")!;
+    const closeModalBtns =
+      wrapper.querySelectorAll<HTMLButtonElement>(".btn-close");
 
     function close() {
-      modalContent.dataset.show = "false";
-      checkOfferBtn.disabled = false;
-      main?.classList.remove("blur");
+      wrapper.dataset.visible = "false";
       document.removeEventListener("click", closeOutside, true);
     }
 
     function closeOutside(e) {
-      if (!modalContent.contains(e.target)) {
+      if (!container.contains(e.target)) {
         close();
       }
     }
 
     function open() {
-      modalContent.dataset.show = "true";
-      checkOfferBtn.disabled = true;
-      main?.classList.add("blur");
+      wrapper.dataset.visible = "true";
       document.addEventListener("click", closeOutside, true);
     }
 
-    checkOfferBtn.addEventListener("click", open);
+    triggerBtn.addEventListener("click", open);
 
-    [closeModalBtn, closeModalIcon].forEach((closeModal) =>
+    closeModalBtns.forEach((closeModal) =>
       closeModal.addEventListener("click", close)
     );
   }
@@ -84,11 +81,11 @@ const {
     @apply px-2 py-1 uppercase text-base bg-sky-300 border-sky-500 border-2 transition duration-300 hover:bg-sky-500 md:text-lg md:px-4 md:py-2;
   }
 
-  #modal[data-show="true"] {
+  #modal-wrapper[data-visible="true"] {
     @apply block;
   }
 
-  body:has(#modal[data-show="true"]) {
+  body:has(#modal-wrapper[data-visible="true"]) {
     @apply overflow-hidden;
   }
 </style>

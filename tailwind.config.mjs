@@ -7,7 +7,7 @@ export default {
       center: true,
       padding: "1.5rem",
       screens: {
-        lg: "1200px",
+        xl: "1200px",
       },
     },
   },
