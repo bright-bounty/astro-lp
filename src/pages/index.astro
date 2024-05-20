@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import "../index.scss";
 import CardProject from "../components/CardProject.astro";
 import PageHeader from "../components/PageHeader.astro";
+import Modal from "../components/Modal.astro";
 const baseSkills = ["HTML", "CSS", "JavaScript"];
 
 const weatherCard = {
@@ -50,6 +50,12 @@ const forestCard = {
   skills: baseSkills,
 };
 
+const modalContent = {
+  title: "Checking title",
+  description:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio praesentium quis veritatis repellendus quam. Quam atque ad sapiente similique accusantium pariatur veniam ipsum reprehenderit, aliquam tenetur recusandae excepturi, aut architecto?",
+};
+
 const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
 ---
 
@@ -59,68 +65,19 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
 >
   <PageHeader />
   <main class="flex flex-col justify-center items-center">
-    <section class="hero container" id="home">
-      <div class="hero__content">
-        <h1 class="hero--title">Travel without limits!</h1>
-        <p class="hero--description">
-          Lorem, ipsum dolor sit amet consecte tur adipisicing elit. Soluta ut
-          facere aliquam impedit ullam minusreprehenderit quia in laudantium
-          sint.
-        </p>
-        <button class="hero--cta">Check offer</button>
-      </div>
-      <div id="modal" class="modal-wrapper">
-        <div class="modal-container">
-          <div class="modal-header">
-            <button class="modal-icon--close">
-              <img
-                src=`${import.meta.env.BASE_URL}/cross.svg`
-                alt="cross icon"
-              />
-              <span class="sr-only">Cross icon to close modal</span>
-            </button>
-            <h2 class="modal--title">Modal title</h2>
-          </div>
-          <div class="modal-content">
-            <p class="modal--description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore
-              ea consequuntur cupiditate sequi. Ipsa iste dignissimos, odit
-              natus nisi quod ipsam dolorum quae temporibus similique expedita
-              error ad quo corporis ipsum ea cumque provident, accusantium quia
-              perspiciatis? Id pariatur eligendi ex nisi quos magnam non ipsum
-              odit beatae! Sint, voluptatum?
-            </p>
-            <button class="hero--cta">Check offer</button>
-          </div>
-          <div id="modal" class="modal-wrapper">
-            <div class="modal-container">
-              <div class="modal-header">
-                <button class="modal-icon--close">
-                  <img
-                    src=`${import.meta.env.BASE_URL}/cross.svg`
-                    alt="cross icon"
-                  />
-                  <span class="sr-only">Cross icon to close modal</span>
-                </button>
-                <h2 class="modal--title">Modal title</h2>
-              </div>
-              <div class="modal-content">
-                <p class="modal--description">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempore ea consequuntur cupiditate sequi. Ipsa iste
-                  dignissimos, odit natus nisi quod ipsam dolorum quae
-                  temporibus similique expedita error ad quo corporis ipsum ea
-                  cumque provident, accusantium quia perspiciatis? Id pariatur
-                  eligendi ex nisi quos magnam non ipsum odit beatae! Sint,
-                  voluptatum?
-                </p>
-              </div>
-              <div class="modal-footer">
-                <button class="modal-btn modal-btn--close">close</button>
-                <button class="modal-btn modal-btn--confirm">confirm</button>
-              </div>
-            </div>
-          </div>
+    <section id="home">
+      <div class="container">
+        <div class="flex items-start justify-center h-screen flex-col">
+          <h1 class="text-5xl font-bold">Travel without limits!</h1>
+          <p class="mt-12 text-2xl">
+            Lorem, ipsum dolor sit amet consecte tur adipisicing elit. Soluta ut
+            facere aliquam impedit ullam minusreprehenderit quia in laudantium
+            sint.
+          </p>
+          <button
+            class="btn-offer mt-12 px-3 py-6 text-2xl font-bold border-2 border-blue-400 bg-blue-300 transition duration-300 hover:bg-blue-400"
+            >Check offer</button
+          >
         </div>
       </div>
     </section>
@@ -164,5 +121,5 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
       </div>
     </section>
   </main>
-  <script src="../scripts/modal.js"></script>
+  <Modal modalContent={modalContent} />
 </Layout>
