@@ -75,17 +75,17 @@
     const list = document.getElementById("navigation-list")!;
     const listItems = list.querySelectorAll("li");
 
-    function toogle() {
+    function toggle() {
       document.body.dataset.navigationOpen === "false"
         ? (document.body.dataset.navigationOpen = "true")
         : (document.body.dataset.navigationOpen = "false");
     }
 
     listItems?.forEach((link) => {
-      link.addEventListener("click", toogle);
+      link.addEventListener("click", toggle);
     });
 
-    btn?.addEventListener("click", toogle);
+    btn?.addEventListener("click", toggle);
   }
 
   document.addEventListener("DOMContentLoaded", mobileNavigation);
