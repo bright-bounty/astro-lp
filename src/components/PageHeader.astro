@@ -1,0 +1,92 @@
+<header class="fixed top-0 left-0 bg-sky-500 w-full z-50">
+  <div class="container relative z-20">
+    <nav class="flex min-h-10 md:flex-row md:justify-between">
+      <div
+        class="flex min-h-full w-full justify-between items-center md:w-auto"
+      >
+        <div>
+          <p><a href="#home">MyPortfolio</a></p>
+        </div>
+        <button
+          id="mobile-navigation"
+          class="cursor-pointer flex items-center justify-center md:hidden"
+        >
+          <div class="nav-bars">
+            <div class="nav-bar"></div>
+            <div class="nav-bar"></div>
+            <div class="nav-bar"></div>
+          </div>
+        </button>
+      </div>
+      <div class="flex justify-center grow">
+        <ul
+          id="navigation-list"
+          class="absolute top-full left-0 bg-white z-10 flex-col w-full min-h-[calc(100vh_-40px)] min-h-[calc(100dvh_-40px)] items-center md:relative md:bg-inherit md:flex-row md:justify-end md:items-center md:min-h-10 md:top-0"
+        >
+          <li class="m-12 md:my-0 self-center"><a href="#home">Home</a></li>
+          <li class="m-12 md:my-0"><a href="#portfolio">Portfolio</a></li>
+          <li class="m-12 md:my-0"><a href="#tbd">TBD</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav-bar {
+    @apply bg-black h-[2px] transform transition-all origin-left;
+  }
+
+  .nav-bars {
+    @apply flex flex-col justify-between w-[26px] h-5;
+  }
+
+  .nav-close {
+    @apply translate-x-full md:translate-x-0;
+  }
+
+  body[data-navigation-open="true"] {
+    @apply overflow-y-hidden md:overflow-auto;
+
+    .nav-bar:nth-child(1) {
+      @apply rotate-45;
+    }
+    .nav-bar:nth-child(2) {
+      @apply hidden;
+    }
+    .nav-bar:nth-child(3) {
+      @apply -rotate-45;
+    }
+
+    #navigation-list {
+      @apply flex;
+    }
+  }
+  body[data-navigation-open="false"] {
+    #navigation-list {
+      @apply hidden md:flex;
+    }
+  }
+</style>
+
+<script>
+  function mobileNavigation() {
+    const btn = document.getElementById("mobile-navigation");
+    const list = document.getElementById("navigation-list")!;
+    const listItems = list.querySelectorAll("li");
+
+    function toggle() {
+      document.body.dataset.navigationOpen === "false"
+        ? (document.body.dataset.navigationOpen = "true")
+        : (document.body.dataset.navigationOpen = "false");
+    }
+
+    listItems?.forEach((link) => {
+      link.addEventListener("click", toggle);
+    });
+
+    btn?.addEventListener("click", toggle);
+  }
+
+  document.addEventListener("DOMContentLoaded", mobileNavigation);
+</script>

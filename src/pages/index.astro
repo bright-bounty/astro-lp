@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CardProject from "../components/CardProject.astro";
+import PageHeader from "../components/PageHeader.astro";
 import Modal from "../components/Modal.astro";
 const baseSkills = ["HTML", "CSS", "JavaScript"];
 
@@ -62,8 +63,9 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
   title="My portfolio"
   description="Portfolio presents my current programming skills, knowledge and stack"
 >
-  <main class="flex flex-col justify-center items-center" id="main">
-    <section>
+  <PageHeader />
+  <main class="flex flex-col justify-center items-center">
+    <section id="home">
       <div class="container">
         <div class="flex items-start justify-center h-screen flex-col">
           <h1 class="text-5xl font-bold">Travel without limits!</h1>
@@ -80,40 +82,41 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
       </div>
     </section>
 
-    <section class="bg-gradient-to-r from-blue-300 to-blue-200 w-full pt-8">
-      <div class="container">
-        <div class="projects w-full max-h-none flex flex-col">
-          <h2 class="title mb-12 text-4xl font-semibold">
-            Portfolio Highlights: Showcasing My Work
-          </h2>
-          <p class="mb-6 text-base">
-            Welcome to my Portfolio Highlights section, where I present a
-            curated selection of my finest work. Here, you'll find a collection
-            of projects that showcase my skills, creativity, and expertise. From
-            innovative designs to successful campaigns, each project reflects my
-            dedication to delivering high-quality results and exceeding
-            expectations.
-          </p>
-          <p class="mb-6 text-base">
-            Explore this gallery to gain insight into my capabilities and see
-            how I can bring value to your projects. Whether you're seeking
-            design inspiration, marketing strategies, or technical solutions, my
-            portfolio highlights demonstrate my ability to tackle diverse
-            challenges and deliver outstanding outcomes. Dive in and discover
-            the depth of my professional experience and the breadth of my
-            creative vision.
-          </p>
-          <div class="mt-24">
-            <ul class="grid md:grid-cols-2 gap-8 md:gap-16">
-              {
-                cards.map((card) => (
-                  <li class="flex justify-stretch">
-                    <CardProject card={card} />
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
+    <section
+      class="projects w-full max-h-none flex flex-col items-center p-8 bg-gradient-to-r from-blue-300 to-blue-200"
+      id="portfolio"
+    >
+      <div class="max-w-6xl">
+        <h2 class="title mb-12 text-4xl font-semibold">
+          Portfolio Highlights: Showcasing My Work
+        </h2>
+        <p class="mb-6 text-base">
+          Welcome to my Portfolio Highlights section, where I present a curated
+          selection of my finest work. Here, you'll find a collection of
+          projects that showcase my skills, creativity, and expertise. From
+          innovative designs to successful campaigns, each project reflects my
+          dedication to delivering high-quality results and exceeding
+          expectations.
+        </p>
+        <p class="mb-6 text-base">
+          Explore this gallery to gain insight into my capabilities and see how
+          I can bring value to your projects. Whether you're seeking design
+          inspiration, marketing strategies, or technical solutions, my
+          portfolio highlights demonstrate my ability to tackle diverse
+          challenges and deliver outstanding outcomes. Dive in and discover the
+          depth of my professional experience and the breadth of my creative
+          vision.
+        </p>
+        <div class="mt-24">
+          <ul class="grid md:grid-cols-2 gap-8 md:gap-16">
+            {
+              cards.map((card) => (
+                <li class="flex justify-stretch">
+                  <CardProject card={card} />
+                </li>
+              ))
+            }
+          </ul>
         </div>
       </div>
     </section>
