@@ -1,17 +1,31 @@
 ---
+import { Octokit } from "@octokit/rest";
+
+const octokit = new Octokit({
+  auth: import.meta.env.OCTOKIT_TOKEN,
+});
+
 interface Props {
   title: string;
   description: string | null;
-  skill: string | null | undefined;
 }
 
-const { title, description, skill } = Astro.props;
+const { title, description } = Astro.props;
 
 const mapSkillToCss = {
   HTML: "text-orange-600",
   CSS: "text-blue-600",
   JavaScript: "text-yellow-600",
 };
+
+const skills = Object.keys(
+  (
+    await octokit.rest.repos.listLanguages({
+      owner: "FrostEvil",
+      repo: `${title}`,
+    })
+  ).data
+);
 ---
 
 <div class="p-6 flex flex-col items-center gap-x-6 shadow-md">
@@ -33,10 +47,12 @@ const mapSkillToCss = {
     </p>
     <ul class="w-full flex justify-around absolute bottom-0">
       {
-        mapSkillToCss[skill as string] ? (
-          <li class={mapSkillToCss[skill as string]}>{skill}</li>
-        ) : (
-          <li class="text-cyan-600">{skill}</li>
+        skills.map((skill) =>
+          mapSkillToCss[skill] ? (
+            <li class={mapSkillToCss[skill]}>{skill}</li>
+          ) : (
+            <li class="text-cyan-600">{skill}</li>
+          )
         )
       }
     </ul>
