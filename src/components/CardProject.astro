@@ -1,35 +1,40 @@
 ---
+import { Octokit } from "@octokit/rest";
+
+const octokit = new Octokit({
+  auth: import.meta.env.OCTOKIT_TOKEN,
+});
+
 interface Props {
-  card: {
-    img: {
-      src: string;
-      alt: string;
-    };
-    title: string;
-    description: string;
-    skills: Array<string>;
-  };
+  title: string;
+  description: string | null;
 }
 
-const {
-  card: {
-    img: { src, alt },
-    title,
-    description,
-    skills,
-  },
-} = Astro.props;
+const { title, description } = Astro.props;
 
 const mapSkillToCss = {
   HTML: "text-orange-600",
   CSS: "text-blue-600",
   JavaScript: "text-yellow-600",
 };
+
+const skills = Object.keys(
+  (
+    await octokit.rest.repos.listLanguages({
+      owner: "FrostEvil",
+      repo: `${title}`,
+    })
+  ).data
+);
 ---
 
 <div class="p-6 flex flex-col items-center gap-x-6 shadow-md">
   <div class="h-64">
-    <img class="rounded-3xl w-64 h-64" src={src} alt={alt} />
+    <img
+      class="rounded-3xl w-64 h-64"
+      src="https://placehold.co/600x400"
+      alt="Placeholder img"
+    />
   </div>
   <div class="relative h-full pb-8">
     <h3

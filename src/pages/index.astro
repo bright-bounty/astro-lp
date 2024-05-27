@@ -3,60 +3,24 @@ import Layout from "../layouts/Layout.astro";
 import CardProject from "../components/CardProject.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Modal from "../components/Modal.astro";
-const baseSkills = ["HTML", "CSS", "JavaScript"];
+import { Octokit } from "@octokit/rest";
 
-const weatherCard = {
-  img: {
-    src: `${import.meta.env.BASE_URL}/project_1.png`,
-    alt: "Weather App Layout",
-  },
-  title: "Weather App",
-  description:
-    "Stay ahead of the forecast with our intuitive weather app. Get real-time updates on current conditions, hourly forecasts, and daily outlooks. Plan your day confidently with accurate weather information at your fingertips. Never be caught off guard by the elements again!",
-  skills: baseSkills,
-};
+const octokit = new Octokit({
+  auth: import.meta.env.OCTOKIT_TOKEN,
+});
 
-const calculatorCard = {
-  img: {
-    src: `${import.meta.env.BASE_URL}/project_2.png`,
-    alt: "Age calculator Layout",
-  },
-  title: "Age calculator",
-  description:
-    "AgeEase: Instantly calculate your age or anyone else' s with precision and simplicity. Whether you're celebrating milestones or planning events, keeps track of the years, months, and days. Effortlessly determine ages for birthdays, anniversaries, or any special occasion.",
-  skills: baseSkills,
-};
-
-const realEstateCard = {
-  img: {
-    src: `${import.meta.env.BASE_URL}/project_3.png`,
-    alt: "Real Estate welcome page",
-  },
-
-  title: "Real Estate",
-  description:
-    "Introducing Real Estate: Your trusted partner in real estate management. From residential complexes to commercial spaces, we offer comprehensive property management services tailored to meet your needs. With a focus on efficiency, transparency, and maximizing property value.",
-  skills: baseSkills,
-};
-
-const forestCard = {
-  img: {
-    src: `${import.meta.env.BASE_URL}/project_4.png`,
-    alt: "Forest Group welcome page",
-  },
-  title: "Forest Group",
-  description:
-    "Welcome to Forest Group: Your digital oasis for landscaped parks. Explore lush green spaces, tranquil gardens, and vibrant landscapes from the comfort of your screen. Discover inspiration for your next outdoor adventure, family picnic, or leisurely stroll.",
-  skills: baseSkills,
-};
+const repos = await octokit.request("GET /users/{username}/repos", {
+  accept: "application/vnd.github+json",
+  username: "FrostEvil",
+  sort: "created",
+  per_page: 5,
+});
 
 const modalContent = {
   title: "Checking title",
   description:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio praesentium quis veritatis repellendus quam. Quam atque ad sapiente similique accusantium pariatur veniam ipsum reprehenderit, aliquam tenetur recusandae excepturi, aut architecto?",
 };
-
-const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
 ---
 
 <Layout
@@ -110,9 +74,12 @@ const cards = [weatherCard, calculatorCard, realEstateCard, forestCard];
         <div class="mt-24">
           <ul class="grid md:grid-cols-2 gap-8 md:gap-16">
             {
-              cards.map((card) => (
+              repos.data.map((repo) => (
                 <li class="flex justify-stretch">
-                  <CardProject card={card} />
+                  <CardProject
+                    title={repo.name}
+                    description={repo.description}
+                  />
                 </li>
               ))
             }
