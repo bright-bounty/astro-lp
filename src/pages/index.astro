@@ -74,12 +74,12 @@ const modalContent = {
         <div class="mt-24">
           <ul class="grid md:grid-cols-2 gap-8 md:gap-16">
             {
-              repos.data.map((data) => (
+              repos.data.map((repo) => (
                 <li class="flex justify-stretch">
                   <CardProject
-                    title={data["name"]}
-                    description={data["description"]}
-                    skill={data["language"]}
+                    title={repo.name}
+                    description={repo.description}
+                    skill={repo.language}
                   />
                 </li>
               ))
